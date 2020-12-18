@@ -1,0 +1,5 @@
+# py2app
+build
+dist
+
+.DS_Store
