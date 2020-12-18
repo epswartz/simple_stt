@@ -8,6 +8,7 @@ Usage:
 from setuptools import setup
 
 APP = ['main.py']
+DATA_FILES = ['--iconfile']
 OPTIONS = {
     'packages':[
         'datetime',
@@ -20,7 +21,8 @@ OPTIONS = {
     ],
     'plist': {
         'CFBundleName': 'SpeechToText'
-    }
+    },
+    'iconfile': '/Users/ethan/simple_stt/stt_icon.icns'
 }
 
 setup(

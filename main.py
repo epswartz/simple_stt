@@ -1,16 +1,15 @@
-from PIL import ImageTk, Image
+from datetime import datetime
 from pydub import AudioSegment
 from tkinter import filedialog, INSERT, DISABLED, NORMAL, WORD
-from datetime import datetime
+from tkinter import ttk
+from tkinter.scrolledtext import ScrolledText
 import io
 import os
 import speech_recognition as sr
 import tkinter as tk
-from tkinter.scrolledtext import ScrolledText
-from tkinter import ttk
+import traceback
 
 TEXT_WIDTH = 100
-
 
 # Set up SR
 rzr = sr.Recognizer()
@@ -39,11 +38,11 @@ def transcribe_btn_clicked():
     if root.filename == '': # They exited without picking a file
         return
     root.filedialog_initialdir = os.path.dirname(root.filename) # For next time
-    text = "An Error Occurred."
+    text = "An Error Occurred: "
     try:
         text = transcribe_audio_file(root.filename)
     except:
-        pass
+        text += traceback.format_exc()
     text_area.insert(INSERT, text + "\n" + "-"*TEXT_WIDTH+"\n"*3)
 
 # Build UI
